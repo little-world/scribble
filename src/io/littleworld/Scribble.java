@@ -8,7 +8,8 @@ import java.awt.event.MouseListener;
 public class Scribble extends JFrame implements MouseListener {
 
 
-    Oval fig = new Oval();
+
+    Figure fig = new Oval();
 
     public Scribble() throws HeadlessException {
         addMouseListener(this);
