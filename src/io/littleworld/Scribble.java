@@ -38,8 +38,10 @@ public class Scribble extends JFrame implements MouseListener {
     @Override
     public void mousePressed(MouseEvent e) {
 
-
-        fig = new Rect();
+        if (e.isPopupTrigger())
+            fig = new Rect();
+        else
+            fig = new Oval();
         System.out.println("pressed");
         fig.x1 = e.getX();
         fig.y1 = e.getY();
