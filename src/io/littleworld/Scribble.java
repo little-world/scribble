@@ -8,7 +8,7 @@ import java.awt.event.MouseListener;
 public class Scribble extends JFrame implements MouseListener {
 
 
-    Rect rect = new Rect();
+    Oval fig = new Oval();
 
     public Scribble() throws HeadlessException {
         addMouseListener(this);
@@ -17,7 +17,7 @@ public class Scribble extends JFrame implements MouseListener {
     @Override
     public void paint(Graphics g) {
         super.paint(g);
-        rect.draw(g);
+        fig.draw(g);
     }
 
     public static void main(String[] args) {
@@ -32,15 +32,15 @@ public class Scribble extends JFrame implements MouseListener {
     @Override
     public void mousePressed(MouseEvent e) {
         System.out.println("pressed");
-        rect.x1 = e.getX();
-        rect.y1 = e.getY();
+        fig.x1 = e.getX();
+        fig.y1 = e.getY();
     }
 
     @Override
     public void mouseReleased(MouseEvent e) {
         System.out.println("released");
-        rect.x2 = e.getX();
-        rect.y2 = e.getY();
+        fig.x2 = e.getX();
+        fig.y2 = e.getY();
         repaint();
     }
 
