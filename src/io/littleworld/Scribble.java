@@ -1,15 +1,19 @@
 package io.littleworld;
 
 import javax.swing.*;
+
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Scribble extends JFrame implements MouseListener {
 
 
+    Figure fig = new Rect();
 
-    Figure fig = new Oval();
+    List<Figure> drawing = new ArrayList<>();
 
     public Scribble() throws HeadlessException {
         addMouseListener(this);
@@ -18,7 +22,8 @@ public class Scribble extends JFrame implements MouseListener {
     @Override
     public void paint(Graphics g) {
         super.paint(g);
-        fig.draw(g);
+        for (Figure f : drawing)
+            f.draw(g);
     }
 
     public static void main(String[] args) {
@@ -32,6 +37,9 @@ public class Scribble extends JFrame implements MouseListener {
 
     @Override
     public void mousePressed(MouseEvent e) {
+
+
+        fig = new Rect();
         System.out.println("pressed");
         fig.x1 = e.getX();
         fig.y1 = e.getY();
@@ -42,6 +50,8 @@ public class Scribble extends JFrame implements MouseListener {
         System.out.println("released");
         fig.x2 = e.getX();
         fig.y2 = e.getY();
+        drawing.add(fig);
+        System.out.println(drawing);
         repaint();
     }
 
